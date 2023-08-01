@@ -1,4 +1,5 @@
 # 1.methodology part. 
+In this part, I will explain about some methodology or notions in my proposal system.
 
 ## 1.1 What is a image retrieval system ?
 <p align="center">
@@ -22,6 +23,12 @@ I used the DeepFashion dataset(https://mmlab.ie.cuhk.edu.hk/projects/DeepFashion
 My proposal system was developed using a type of Deep Metric Learning called "triplet loss." Triplet loss aims to learn a metric where similar images  are close to each other, and dissimilar images are far apart. In this method, the anchor represents a customer's image. Positive is the same product as ANCHOR and is the store image. the negative represents an image from the same small category but it is different product from the anchor and positive. In other words, the negative is somewhat close to the anchor but not the same product. For example, in the case of images, the anchor and positive are both tank tops of the same design, while the negative is also a tank top but of a different product (ID). This kind of relationship is commonly referred to as "hard negative." To achieve this, the difference of feature vectors in anchor and positive and the difference of feature vectors between anchor and negative,  are calculated using the Euclidean distance as the triplet loss function.
 
 # 2.Code part
+In this section, I will show the code and explain it. My Deep metric learning program was developed with reference to following two sites.
+<ul>
+  <li>Keras(https://keras.io/examples/vision/siamese_network/)</li>
+  <li>kaggle(https://www.kaggle.com/code/xhlulu/shopee-siamese-resnet-50-with-triplet-loss-on-tpu)</li>
+</ul>
+
 ## 2.1 Development Environment
 I used Google Colaboratory as our Integrated Development Environment (IDE). The reason for this choice is that Colaboratory provides high-performance GPUs, which are beneficial for training deep learning models. Specifically, I utilized the NVIDIA A100 GPU for our tasks. For programming, I opted to use Python and selected Keras and Tensorflow as our deep learning libraries for training.
 
@@ -34,5 +41,7 @@ The flow of the program is as follows:
 2.	Next, I define the architecture to be used for training.
 3.	I perform the training using the defined architecture and obtain the feature vectors for both the query image and the database images using the trained architecture.
 4.	Finally, I compare the similarity of the feature vectors to conduct image retrieval.
+
+## 2.3 Create training data.
 
 
