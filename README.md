@@ -43,5 +43,16 @@ The flow of the program is as follows:
 4.	Finally, I compare the similarity of the feature vectors to conduct image retrieval.
 
 ## 2.3 Create training data.
+First, I put some folders which are DRESSES,TOPS and TROUSERS at Google colaboratory from deep fashion datasets. And I stored these three folders in a folder called "img". The The reason why I did not put them at Google drive, it takes long time to read those images when training the model. I definitely recommend you to put them in Google colaboratory, not Google drive. Moreover, I made a data frame which describes each image file path by reading "img" folder. 
+<p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/e2ed4819-eb61-4ea4-91a3-929ca0b78610" />
+</p>
 
+Next,I added new label for small categories.This label was used for making triplet pair of images later.
+<p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/a938e7f5-3206-4ae1-b052-1e3b9cae3555" />
+</p>
+<p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/faa211db-6bce-4f77-acfd-634ae8f8da35" />
+</p>
 
