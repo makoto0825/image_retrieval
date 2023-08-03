@@ -48,7 +48,7 @@ First, I put some folders which are DRESSES,TOPS and TROUSERS at Google colabora
   <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/e2ed4819-eb61-4ea4-91a3-929ca0b78610" />
 </p>
 
-Next,I added new label for small categories.This label was used for making triplet pair of images later.
+Next,I added new label for small categories. This label was used for making triplet pair of images later.
 <p align="center">
   <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/a938e7f5-3206-4ae1-b052-1e3b9cae3555" />
 </p>
@@ -56,3 +56,12 @@ Next,I added new label for small categories.This label was used for making tripl
   <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/faa211db-6bce-4f77-acfd-634ae8f8da35" />
 </p>
 
+I made test_df, train_df, validation_df from df2. Which image belongs to train, test, or validation is determined from the information in the list_eval_partition.xlsx file.　This xlsx file was made myself. Hence you need make it yourself from list_eval_partition.txt in deepfashion. This text file shows the combination of anchor and positive, and which type it belongs to: test, train, or validation.
+<p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/43377ad8-7fd1-46e3-80b4-363147201e8e" />
+</p>
+
+I then merge the "kind" information (train, val, test) from the pre-prepared Excel file and add it to img_df2. Using the "kind" column as a filter, I create separate dataframes for training, validation, and testing. However, the image paths (in the "anchor" column) in the created dataframes contain both customer and shop images. To address this, I remove all rows that contain the string "shop_" in the path. I then create a new column called "positive" based on the Excel file's information about the matching of anchor and positive images. 
+<p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/ead9ba63-c321-4a27-af93-a81bdaee9e47" />
+</p>
