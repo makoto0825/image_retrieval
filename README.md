@@ -65,3 +65,8 @@ I then merge the "kind" information (train, val, test) from the pre-prepared Exc
 <p align="center">
   <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/ead9ba63-c321-4a27-af93-a81bdaee9e47" />
 </p>
+
+Following  image is sample of train_df, which has several imformation  such as anchor,id, small category, positive, kind.
+<p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/d5616c97-49f6-44d4-9d30-1b9536328f31" />
+</p>
