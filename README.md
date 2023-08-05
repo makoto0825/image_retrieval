@@ -84,3 +84,24 @@ Once the functions are defined, I use the create_triplets function and the previ
 <p align="center">
   <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/088f2c95-6ce5-4b30-906f-ce78a5908716" />
 </p>
+
+## 2.4 Deep learning.
+First, I define a custom Keras layer called DistanceLayer() to perform distance calculations. This layer is used to compute the distances between anchor and positive images, as well as between anchor and negative images. It is intended for calculating the triplet loss.
+<p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/87a82672-38f3-45c4-b0c8-4d36d1fc3267" />
+</p>
+ Next, I create an architecture by adding several layers to the baseline model ResNet50 (Figure 56). Dropout layers were added to prevent overfitting, and a dense layer with 512 dimensions was added as the output layer. The feature vectors output from this layer are used to compute distances using the previously defined DistanceLayer. The training is restricted to layers below stage 5.
+ <p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/93f0868e-b0f6-4d6a-a3ac-b1e9a8adb028" />
+</p>
+
+ I then define the class SiameseModel, which implements triplets along with custom training and testing loops. The train_step(self, data) method, defined within the class, sets up a custom training loop. It takes one batch during training, computes the loss for that batch, and updates the model weights. The test_step(self, data) method defines a custom validation loop. It takes one batch (data) during validation, computes the loss for that batch, updates the loss metric, and returns the result. The _compute_loss method calculates the loss (Triplet Loss). It subtracts the distance between the anchor and positive from the distance between the anchor and negative, and then adds a margin (0.5) to the result, ensuring that the value does not go below 0 by clipping it (setting the maximum value to 0). This resulting value is the triplet loss.
+  <p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/c72eef41-5207-486f-bb8f-1846050ac12e" />
+</p>
+ Finally, I create an instance of the SiameseModel class, compile the model using the Adam optimizer with a learning rate of 0.0001, and proceed with training for 10 epochs.
+  <p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/d279a95c-df2a-482b-9cc2-e9d7e608d749" />
+</p>
+
+ 
