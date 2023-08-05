@@ -70,3 +70,17 @@ Following  image is sample of train_df, which has several imformation  such as a
 <p align="center">
   <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/d5616c97-49f6-44d4-9d30-1b9536328f31" />
 </p>
+
+Once the dataframes are created, the next step is to build TensorFlow datasets from the df. First, I define a function for image preprocessing. Specifically, the function reads the image files, resizes them, and applies normalization preprocessing for ResNet-style processing. 
+<p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/48825d66-886c-4756-b8f2-b73a8e61a5bd" />
+</p>
+Anchor and positive images are obtained directly from the "anchor" and "positive" columns of the created df, respectively. On the other hand, negative images are randomly selected from the paths of images where the 'Label1 (small category)' column is equal to the anchor but with different IDs (hard negative).
+<p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/801fb273-b50f-45da-bee4-33322d12fc3b" />
+</p>
+
+Once the functions are defined, I use the create_triplets function and the previously created df to generate lists of triplets. Then, using this information, I create TensorFlow datasets. The created datasets are batched and optimized for faster processing with prefetching. Additionally, the data order is randomized. This process is carried out for both train_df and vali_df datasets.
+<p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/088f2c95-6ce5-4b30-906f-ce78a5908716" />
+</p>
