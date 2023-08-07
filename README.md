@@ -104,4 +104,39 @@ First, I define a custom Keras layer called DistanceLayer() to perform distance 
   <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/d279a95c-df2a-482b-9cc2-e9d7e608d749" />
 </p>
 
- 
+## 2.5 image retrieval.
+I load the previously trained model in order to get features of database.At this point, I perform feature extraction for all image files present in the specified folder and its subfolders. I achieve this through the "get_bottom_folders" function, which recursively retrieves the deepest level of folders in the specified directory. Then, within a for loop, I use the predict method to extract features and obtain file paths for each image file in the subfolders.
+  <p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/d248392b-9eac-4a60-8c0e-025de6deeea7" />
+</p>
+  <p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/ea926007-a29e-45d4-876b-d5382986a8ee" />
+</p>
+
+The same process is used to obtain the features of the query image. 
+</p>
+  <p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/55ea0244-4162-4ad5-ab0c-1c5d0c059b09" />
+</p>
+</p>
+  <p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/0c91c31c-2ab4-454f-9d3d-0f5ebcdb9084" />
+</p>
+
+Once I have obtained the feature vectors for both the database and the query image, the next step is to calculate the similarity between the feature vectors of the query image and the database images to detect highly similar images. This process is carried out using three functions: "def cos_sim," "def get_top_n_indexes," and "def search". These functions take the query vector, the list of feature vectors (features), and the list of file names (file_names) as input and calculate the Cosine similarity. The results are sorted in descending order by similarity value, and the corresponding indexes, similarity values, and file names are returned.
+</p>
+  <p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/1659dcb2-59af-4822-beb5-f260a382bd43" />
+</p>
+
+To execute the similarity calculation for a specific query image name, I call the "def search" function and specify the query image name.
+</p>
+  <p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/8082bd41-91d2-4bcd-9fa1-82230b9332ce" />
+</p>
+
+Finally, the function outputs the top 20 images with the highest similarity.
+</p>
+  <p align="center">
+  <img src="https://github.com/makoto0825/image_retrieval/assets/120376737/fb9373ef-f203-482c-a8ea-e83212610bb5" />
+</p>
